@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages</title>
+    {% comment %} <link rel="stylesheet" href="{% static 'css/messages.css' %}"> {% endcomment %}
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+        }
+        
+        .sidebar {
+            width: 250px;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+        }
+        
+        .logo {
+            {% comment %} font-size: 20px;
+            font-weight: bold; {% endcomment %}
+            margin-bottom: 20px;
+        }
+        .logo img {
+            width: 100px;
+            height: 100px;
+        } 
+        
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .sidebar ul li {
+            width: 100%;
+            text-align: center;
+            margin: 10px 0;
+        }
+        
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .sidebar ul li a:hover {
+            background-color: #444;
+        }
+        
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: #f4f4f4;
+            overflow-y: auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .header .user-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .header .teacher {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .messages-section {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .messages-section h1 {
+            color: #1a73e8;
+        }
+        
+        .no-messages {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        
+        .no-messages img {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .no-messages h2 {
+            color: #1a73e8;
+            margin: 20px 0;
+        }
+        
+        .no-messages p {
+            color: #f96d00;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        {% comment %} <div class="log">
+            <img src="{% static 'images/code-academy.png'   static %}" alt="Code Academy Uganda Logo"> {% endcomment %}
+        <div class="logo"><a href="{% url 'adminpage' %}"> <img src="{% static 'images/code-academy.png'   static %}" alt="Code Academy Uganda Logo"></a></div>
+        <ul>
+            <li><a href="{% url 'adminpage' %}">Courses</a></li>
+            <li><a href="#">Community</a></li>
+            <li><a href="#">Tools</a></li>
+            <li><a href="{% url 'course_overview' %}">Performance</a></li>
+            <li><a href="#">Communications</a></li>
+            <li><a href="#">Messages</a></li>
+            <li><a href="#">Resources</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <div class="header">
+            <div class="user-info">
+                <span class="teacher">Teacher</span>
+                <span class="user-name">{{ user.username }}</span>
+            </div>
+        </div>
+        <div class="messages-section">
+            <h1>Messages</h1>
+            <div class="no-messages">
+                <img src="{% static 'images/image.png' static%}" alt="No new messages">
+                <h2>No new messages</h2>
+                <p>Direct messages are for you to communicate with your students or other instructors privately. Here's where you will see them.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,10 +1,206 @@
+
 <!DOCTYPE html>
+{% load static%}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>admin page</title>
+    <title>Code Academy Uganda - Admin Panel</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #000;
+        }
+        
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        
+        .sidebar {
+            width: 250px;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+        }
+        .button {
+            display: block;
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: left;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #000;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .button:hover {
+            background-color: #05046B;
+        }
+        
+        .logo {
+            text-align: center;
+        }
+        
+        .logo img {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .logo h1 {
+            font-size: 18px;
+            margin: 10px 0 20px 0;
+            line-height: 1.2;
+        }
+        
+        .nav {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        .nav-item.active,
+        .nav-item:hover {
+            background-color: #1a73e8;
+        }
+        
+        .nav-item .icon {
+            margin-right: 10px;
+        }
+        
+        .main-content {
+            flex-grow: 1;
+            background-color: #fff;
+            padding: 20px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .user-info span {
+            margin-left: 15px;
+        }
+        
+        .welcome-section {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .welcome-section h1 {
+            font-size: 72px;
+            font-weight: 700;
+        }
+        
+        .welcome-section h2 {
+            font-size: 48px;
+            margin: 20px 0;
+        }
+        
+        .welcome-section p {
+            font-size: 24px;
+        }
+        
+        .welcome-section a {
+            color: blue;
+            text-decoration: none;
+        }
+        
+        .welcome-section a:hover {
+            text-decoration: underline;
+        }
+        
+    </style>
 </head>
+
 <body>
-    <h1> hello {{ user.username }} your role is admin</h1>
+    
+     <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="{% static 'images/code-academy.png'   static %}" alt="Code Academy Uganda Logo">
+                <h1>CODE ACADEMY<br>UGANDA</h1>
+            </div>
+            <ul class="nav">
+                <li class="nav-item ">
+                    <i class="icon">📺</i>
+                    <button class="button" onclick="location.href='{% url 'hello_world' %}'">Courses</button>
+                    {% comment %} <span><a href="{% url 'hello_world' %}">Courses</a></span> {% endcomment %}
+                </li>
+                {% comment %} <li class="nav-item">
+                    <i class="icon">👥</i> {% endcomment %}
+                    {% comment %} <button class="button" onclick="location.href='{% url 'hello_world' %}'">Community</button> {% endcomment %}
+                    {% comment %} <span>Community</span> {% endcomment %}
+                {% comment %} </li> {% endcomment %}
+                <li class="nav-item">
+                    <i class="icon">🔧</i>
+                    <button class="button" onclick="location.href='{% url 'hello_world' %}'">Tools</button>
+                    {% comment %} <span>Tools</span> {% endcomment %}
+                </li>
+                <li class="nav-item">
+                    <i class="icon">📊</i>
+                    <button class="button" onclick="location.href='{% url 'hello_world' %}'">Performance</button>
+                    {% comment %} <span>Performance</span> {% endcomment %}
+                </li>
+                <li class="nav-item">
+                    <i class="icon">💬</i>
+                    <button class="button" onclick="location.href='{% url 'messages' %}'">Communications</button>
+                </li>
+                <li class="nav-item">
+                    <i class="icon">📚</i>
+                    <button class="button" onclick="location.href='{% url 'messages' %}'">Resources</button>
+                    
+        
+                </li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="header">
+                <div class="user-info">
+                    <span>Teacher</span>
+                    <span>🔔</span>
+                    <span class="user-name">{{ user.username }}</span>
+                </div>
+            </div>
+            <div class="welcome-section">
+                <h1>WELCOME</h1>
+                <h2>its All here</h2>
+                {% comment %} <h5> hello {{ user.username }} your role is admin</h5> {% endcomment %}
+                <p>
+                    {% comment %} {% url 'homepage_admin' %} {% endcomment %}
+                    Educate others by <a href="#">creating</a> a course
+                    or <a href="{% url 'hello_world' %}">get started here</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+
 </body>
 </html>

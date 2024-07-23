@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses</title>
+    {% comment %} <link rel="stylesheet" href="{% static 'css/courses.css' %}"> {% endcomment %}
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.course-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.course-item {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fafafa;
+}
+
+.course-item h2 {
+    margin: 0 0 10px;
+    color: #0056b3;
+}
+
+.course-item p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.delete-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #d9534f;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete-btn:hover {
+    background-color: #c9302c;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Available Courses</h1>
+        <div class="course-list">
+            {% for course in courses %}
+            <div class="course-item">
+                <h2>{{ course.title }}</h2>
+                <p>{{ course.description }}</p>
+                <p><strong>Instructor:</strong> {{ course.instructor.username }}</p>
+                <form method="POST" action="{% url 'delete_course' course.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="delete-btn">Remove</button>
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

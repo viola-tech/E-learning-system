@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #e6e9ef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .container {
+            width: 800px;
+        }
+        
+        .profile-card {
+            display: flex;
+            justify-content: space-between;
+            background-color: #f2f3f7;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .profile-info, .project-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .profile-pic, .project-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        
+        .profile-info h2, .profile-info p, .project-info p {
+            margin: 5px 0;
+        }
+        
+        .assessment {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .assessment-card {
+            background-color: #fae5d3;
+            width: 48%;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .assessment-card h3, .assessment-card p {
+            margin: 10px 0;
+        }
+        
+        .term-assessment {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .term-assessment h3 {
+            background-color: #afbeca;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        
+        .assessment-details {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .term-card {
+            background-color: #d1d5db;
+            width: 30%;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .term-card h4 {
+            margin: 10px 0;
+        }
+        
+        .circular-progress {
+            position: relative;
+            width: 50px;
+            height: 50px;
+        }
+        
+        .circular-progress span {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 14px;
+        }
+        
+        .circular-progress .circle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            clip: rect(0, 50px, 50px, 25px);
+        }
+        
+        .circular-progress .circle .bar {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 5px solid #4caf50;
+            clip: rect(0, 25px, 50px, 0);
+            border-radius: 50%;
+        }
+        
+        .circular-progress .circle .right .progress {
+            transform: rotate(180deg);
+        }
+        
+        .circular-progress .circle .left .progress {
+            animation: left-progress 1s linear forwards;
+        }
+        
+        @keyframes left-progress {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(45deg);
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-card">
+            <div class="profile-info">
+                {% comment %} <img src="{% static 'images/profile_picture.png' %}" alt="Profile Picture" class="profile-pic"> {% endcomment %}
+                <h2>Chloe Heavens</h2>
+                <p>Level: 1</p>
+                <p>Username: Chloe_256 Password: Chloe@Code</p>
+            </div>
+            <div class="project-info">
+                {% comment %} <img src="{% static 'images/scratch_project.png' %}" alt="Scratch Project" class="project-pic"> {% endcomment %}
+                <p>Scratch 3 Projects</p>
+            </div>
+        </div>
+        <div class="assessment">
+            <div class="assessment-card">
+                <h3>Quiz</h3>
+                <p>0%</p>
+            </div>
+            <div class="assessment-card">
+                <h3>Final Project</h3>
+                <div class="circular-progress">
+                    <span>75%</span>
+                    <div class="circle">
+                        <div class="bar left">
+                            <div class="progress"></div>
+                        </div>
+                        <div class="bar right">
+                            <div class="progress"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="term-assessment">
+            <h3>Term Assessment</h3>
+            <div class="assessment-details">
+                <div class="term-card">
+                    <h4>Attendance</h4>
+                    <div class="circular-progress">
+                        <span>25%</span>
+                        <div class="circle">
+                            <div class="bar left">
+                                <div class="progress"></div>
+                            </div>
+                            <div class="bar right">
+                                <div class="progress"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="term-card">
+                    <h4>Retention</h4>
+                    <div class="circular-progress">
+                        <span>25%</span>
+                        <div class="circle">
+                            <div class="bar left">
+                                <div class="progress"></div>
+                            </div>
+                            <div class="bar right">
+                                <div class="progress"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="term-card">
+                    <h4>Creativity</h4>
+                    <div class="circular-progress">
+                        <span>25%</span>
+                        <div class="circle">
+                            <div class="bar left">
+                                <div class="progress"></div>
+                            </div>
+                            <div class="bar right">
+                                <div class="progress"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="term-card">
+                    <h4>Concentration in class</h4>
+                    <div class="circular-progress">
+                        <span>25%</span>
+                        <div class="circle">
+                            <div class="bar left">
+                                <div class="progress"></div>
+                            </div>
+                            <div class="bar right">
+                                <div class="progress"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="term-card">
+                    <h4>Interest in Coding</h4>
+                    <div class="circular-progress">
+                        <span>25%</span>
+                        <div class="circle">
+                            <div class="bar left">
+                                <div class="progress"></div>
+                            </div>
+                            <div class="bar right">
+                                <div class="progress"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="term-card">
+                    <h4>Speed</h4>
+                    <div class="circular-progress">
+                        <span>25%</span>
+                        <div class="circle">
+                            <div class="bar left">
+                                <div class="progress"></div>
+                            </div>
+                            <div class="bar right">
+                                <div class="progress"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

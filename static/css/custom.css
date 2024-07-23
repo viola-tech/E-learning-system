@@ -1,0 +1,16 @@
+/* custom.css */
+.btn-primary {
+    background-color: #2522E0;
+    border-color: #7978c8;
+}
+
+.btn-primary:hover {
+    background-color:#7472d3;;
+    border-color: blue;
+}
+
+/* custom.css */
+.btn {
+    font-size: 18px; /* Adjust the font size as needed */
+}
+

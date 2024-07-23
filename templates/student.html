@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CODE ACADEMY</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background: blue;
+            color: #fff;
+            padding: 20px 0;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo h1, .logo p {
+            margin: 0;
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .content {
+            display: flex;
+        }
+        
+        aside {
+            width: 250px;
+            background: #7A82F8;
+            padding: 20px;
+        }
+        
+        .profile {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .avatar {
+            width: 100px;
+            height: 100px;
+            background: #ccc;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+        }
+        .avatar img {
+            width: 100px;
+            height: 100px;
+        }
+        
+        
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        nav ul li {
+            margin-bottom: 10px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 10px;
+            background: #ddd;
+            border-radius: 5px;
+        }
+        
+        nav ul li a:hover {
+            background: #bbb;
+        }
+        
+        main {
+            flex: 1;
+            padding: 20px;
+        }
+        
+        .module {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .module-item {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            max-width: 200px;
+        }
+        .module-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+        .progress-bar {
+            background: #eee;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+            height: 20px;
+            margin-top: 10px;
+        }
+        
+        .progress {
+            background: #E96B04;
+            height: 100%;
+            border-radius: 5px;
+        }
+        
+        .progress span {
+            position: absolute;
+            top: 0;
+            right: 10px;
+            font-size: 12px;
+            color: #fff;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>CODE ACADEMY</h1>
+                <p>UGANDA</p>
+            </div>
+            <div class="contact-info">
+                <span>📞</span>
+                <span>📧</span>
+                <span>📍 Edward Mugalu Road Mpererwe</span>
+                <!-- {% comment %} <h1> hello {{ user.username }} your role is Student</h1> {% endcomment %} -->
+            </div>
+        </div>
+    </header>
+
+    <div class="content">
+        <aside>
+            <div class="profile">
+                <div class="avatar">
+                    <img src="{% static 'images/code-academy.png'   static %}" alt="Code Academy Uganda Logo">
+                </div>
+                <p>Hello {{ user.username }}</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'quiz' %}">Dashboard</a></li>
+                    <li><a href="{% url 'quiz' %}">Quizzes</a></li>
+                    <li><a href="{% url 'learning_materials' %}">Learning materials</a></li>
+                    <li><a href="#">Submit project</a></li>
+                    <li><a href="{% url 'student_profile' %}">Learner report</a></li>
+                    <li><a href="{% url 'logout_confirmation' %}">Log out</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main>
+            <h2>Scratch Intermediate Module</h2>
+            <div class="module">
+                <div class="module-item">
+                    <img src="{% static 'images/image.png' %}" alt="Learning Progress">
+                    <p>Learning Progress</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 79%;"></div>
+                        <span>79%</span>
+                    </div>
+                </div>
+                <div class="module-item">
+                    <img src="{% static 'images/image.png' %}" alt="Quizzes">
+                    <p>Quizzes</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 79%;"></div>
+                        <span>79%</span>
+                    </div>
+                </div>
+                <div class="module-item">
+                    <img src="{% static 'images/image.png' %}" alt="Project Submission">
+                    <p>Project Submission</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 0%;"></div>
+                        <span>0%</span>
+                    </div>
+                </div>
+                <div class="module-item">
+                    <img src="{% static 'images/image.png' %}" alt="Analytics">
+                    <p>Analytics</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 79%;"></div>
+                        <span>79%</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

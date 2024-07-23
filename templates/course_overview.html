@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Overview</title>
+    {% comment %} <link rel="stylesheet" href="{% static 'css/course_overview.css' %}"> {% endcomment %}
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+        }
+        
+        .sidebar {
+            width: 250px;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+        }
+        .logo img {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .logo h1 {
+            font-size: 18px;
+            margin: 10px 0 20px 0;
+            line-height: 1.2;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .sidebar ul li {
+            width: 100%;
+            text-align: center;
+            margin: 10px 0;
+        }
+        
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .sidebar ul li a:hover {
+            background-color: #444;
+        }
+        
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .header .ratings, .header .days, .header .learners, .header .user-info {
+            margin: 0 10px;
+        }
+        
+        .header .user-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .header .teacher {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .course-banner {
+            background-color: #eee;
+            position: relative;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .course-banner .edit-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .course-banner .description {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .tabs {
+            display: flex;
+            margin: 20px 0;
+        }
+        
+        .tab {
+            flex-grow: 1;
+            padding: 10px;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            background-color: #ddd;
+            border-radius: 5px;
+            margin: 0 5px;
+        }
+        
+        .tab.active {
+            background-color: #6200ea;
+            color: #fff;
+        }
+        
+        .course-details {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .detail-item {
+            margin: 10px 0;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <a href="{% url 'adminpage' %}">
+            <img src="{% static 'images/code-academy.png'   static %}" alt="Code Academy Uganda Logo"></a>
+            <h1>CODE ACADEMY<br>UGANDA</h1>
+        </div>
+        {% comment %} <div class="logo">CODE ACADEMY</div> {% endcomment %}
+        <ul>
+            <li><a href="{% url 'hello_world' %}">Courses</a></li>
+            <li><a href="#">Community</a></li>
+            <li><a href="#">Tools</a></li>
+            <li><a href="#">Performance</a></li>
+            <li><a href="{% url 'messages' %}">Communications</a></li>
+            <li><a href="#">Resources</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <div class="header">
+            <div class="ratings">4.5 ☆ Ratings</div>
+            <div class="days">27 🕒 Days</div>
+            <div class="learners">45 👥 Learners</div>
+            <div class="user-info">
+                <span class="teacher">Teacher</span>
+                <span class="user-name">{{ user.username }}</span>
+            </div>
+        </div>
+        <div class="course-banner">
+            <button class="edit-btn">Edit</button>
+            <div class="description">DESCRIPTION GOES HERE</div>
+        </div>
+        <div class="tabs">
+            <button class="tab active">Course Overview</button>
+            <button class="tab"><a href="{% url 'curriculum' %}">Curriculum</a></button>
+            <button class="tab">Analytics</button>
+            <button class="tab">Assessments</button>
+        </div>
+        <div class="course-details">
+            <div class="detail-item">Enrolled Students: 557</div>
+            <div class="detail-item">Active Students: 204</div>
+            <div class="detail-item">Course Duration: 1 year</div>
+            <div class="detail-item">Number of Quizzes: 15</div>
+            <div class="detail-item">Number of Tests: 15</div>
+        </div>
+    </div>
+</body>
+</html>

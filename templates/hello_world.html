@@ -1,0 +1,325 @@
+<!-- hello_world.html -->
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World</title>
+</head>
+<body> {% endcomment %}
+
+
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Academy Uganda - Homepage</title>
+    <link rel="stylesheet" href="{% static 'images/styles.css' %}">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #000;
+            color: #fff;
+            height: 100vh;
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+        }
+
+        .logo {
+            text-align: center;
+        }
+
+        .logo h1 {
+            font-size: 18px;
+            margin: 10px 0 20px 0;
+            line-height: 1.2;
+        }
+
+        .logo img {
+            width: 100px;
+        }
+
+        .nav {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .nav-item.active,
+        .nav-item:hover {
+            background-color: #2c3e50;
+        }
+
+        .nav-item .icon {
+            margin-right: 10px;
+        }
+
+        .button {
+            display: block;
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: left;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #000;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .button:hover {
+            background-color: #05046B;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .header {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-name {
+            background-color: #ff5500;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .course-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .new-course {
+            background-color: #0000FF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            padding: 10px;
+            margin: 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .filter-button {
+            background-color: #ccc;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .course-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .course-item {
+            display: flex;
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-item img {
+            width: 150px;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .course-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .course-info h2 {
+            margin: 0 0 10px;
+            font-size: 1.5em;
+        }
+
+        .course-meta {
+            display: flex;
+            gap: 20px;
+            color: #777;
+        }
+
+        .course-status {
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: #fff;
+        }
+
+        .course-item.published .course-status {
+            background-color: green;
+        }
+
+        .course-item.unpublished .course-status {
+            background-color: red;
+        }
+
+        .course-item.draft .course-status {
+            background-color: yellow;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <a href="{% url 'adminpage' %}">
+                    <img src="{% static 'images/code-academy.png' static %}" alt="Code Academy Uganda Logo"></a>
+                <h1>CODE ACADEMY<br>UGANDA</h1>
+            </div>
+            <ul class="nav">
+                <li class="nav-item">
+                    <i class="icon">📺</i>
+                    <button class="button" onclick="location.href='{% url 'course_overview' %}'">Course-overview</button>
+                </li>
+                <li class="nav-item">
+                    <i class="icon">👥</i>
+                    <button class="button" onclick="location.href='{% url 'course_overview' %}'">Community</button>
+                    {% comment %} <span>Community</span> {% endcomment %}
+                </li>
+                <li class="nav-item">
+                    <i class="icon">🔧</i>
+                    <button class="button" onclick="location.href='{% url 'course_overview' %}'">Tools</button>
+                    {% comment %} <span>Tools</span> {% endcomment %}
+                </li>
+                <li class="nav-item">
+                    <i class="icon">📊</i>
+                    <button class="button" onclick="location.href='{% url 'course_overview' %}'">Performance</button>
+                    {% comment %} <span>Performance</span> {% endcomment %}
+                </li>
+                <li class="nav-item">
+                    <i class="icon">💬</i>
+                    <button class="button" onclick="location.href='{% url 'messages' %}'">Communications</button>
+                </li>
+                <li class="nav-item">
+                    <i class="icon">📚</i>
+                    <button class="button" onclick="location.href='{% url 'course_overview' %}'">Resources</button>
+                    {% comment %} <span>Resources</span> {% endcomment %}
+                </li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="header">
+                <div class="user-info">
+                    <span>Teacher</span>
+                    <span>🔔</span>
+                    <span class="user-name">{{ user.username }}</span>
+                </div>
+            </div>
+            <div class="course-actions">
+                <button class="new-course" onclick="location.href='{% url 'course_list' %}'">+ New Course</button>
+                <input type="text" class="search-bar" placeholder="Search your courses">
+                <button class="filter-button">Filter ▼</button>
+            </div>
+            <div class="course-list">
+                <div class="course-item published">
+                    <img src="{% static 'images/photo_1.jpg' %}" alt="Game Making">
+                    <div class="course-info">
+                        <h2>GAME MAKING IN 3 MONTHS</h2>
+                        <div class="course-meta">
+                            <span>45 Learners</span>
+                            <span>27 Days</span>
+                            <span>27 Reviews</span>
+                        </div>
+                        <div class="course-status">PUBLISHED</div>
+                    </div>
+                </div>
+                <div class="course-item unpublished">
+                    <img src="{% static 'images/photo_2.jpg' %}" alt="Python">
+                    <div class="course-info">
+                        <h2>PYTHON IN 4 MONTHS</h2>
+                        <div class="course-meta">
+                            <span>45 Learners</span>
+                            <span>27 Days</span>
+                            <span>27 Reviews</span>
+                        </div>
+                        <div class="course-status">UNPUBLISHED</div>
+                    </div>
+                </div>
+                <div class="course-item draft">
+                    <img src="{% static 'images/photo_3.jpg' %}" alt="Machine Learning">
+                    <div class="course-info">
+                        <h2>MACHINE LEARNING IN 48 DAYS</h2>
+                        <div class="course-meta">
+                            <span>45 Learners</span>
+                            <span>27 Days</span>
+                            <span>27 Reviews</span>
+                        </div>
+                        <div class="course-status">DRAFT</div>
+                    </div>
+                </div>
+                <div class="course-item published">
+                    <img src="{% static 'images/photo_4.jpg' %}" alt="Web Development">
+                    <div class="course-info">
+                        <h2>WEB DEVELOPMENT IN 3 MONTHS</h2>
+                        <div class="course-meta">
+                            <span>45 Learners</span>
+                            <span>27 Days</span>
+                            <span>27 Reviews</span>
+                        </div>
+                        <div class="course-status">PUBLISHED</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
