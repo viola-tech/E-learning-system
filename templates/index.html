@@ -28,16 +28,17 @@
           <div class="row justify-content-center">
             <div class="col-md-12">
               <div class="form-block">
-                  <div class="mb-4">
-                      <h1>Welcome Back </h1>
+                  <div class="mb-4 text-center">
+                      <img src="{% static 'images/blue.png' %}" alt="Code Academy Uganda Logo" class="img-fluid mb-3" style="max-width: 150px;">
+                      <h1>Welcome Back</h1>
                   </div>
                   <label>Log in if you already have registered!</label>
                   <div class="form-group last mb-4">
-                      <div><button class="btn btn-pill text-white btn-block btn-primary"><a href="{% url 'login_view' %}">login</a></button></div>
+                      <button class="btn btn-pill text-white btn-block btn-primary"><a href="{% url 'login_view' %}">Login</a></button>
                   </div>
                   <label>If not register here!</label>
                   <div class="form-group last mb-4">
-                      <div><button class="btn btn-pill text-white btn-block btn-primary"><a href="{% url 'register' %}">register</a></button></div>
+                      <button class="btn btn-pill text-white btn-block btn-primary"><a href="{% url 'register' %}">Register</a></button>
                   </div>
               </div>
             </div>

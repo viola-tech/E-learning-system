@@ -1,6 +1,11 @@
 from django.shortcuts import render, redirect
 from .forms import SignUpForm, LoginForm
 from django.contrib.auth import authenticate, login 
+from .forms import StudentRegistrationForm, AdultRegistrationForm
+from django.shortcuts import  get_object_or_404
+from django.contrib.auth.decorators import login_required
+from .models import Course
+
 # Create your views here.
 
 
@@ -92,9 +97,6 @@ def logout_confirmation(request):
 #     return redirect('login')
 
 # views.py
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
-from .models import Course
 
 @login_required
 def course_list(request):
@@ -114,6 +116,40 @@ def delete_course(request, course_id):
 # views.py
 # from django.shortcuts import render, get_object_or_404, redirect
 # from .models import Course
+
+
+def landing_view(request):
+    return render(request, 'landing.html')
+
+def registration_type_view(request):
+    if request.method == 'POST':
+        registration_type = request.POST.get('type')
+        if registration_type == 'student':
+            return redirect('student_registration')
+        elif registration_type == 'adult':
+            return redirect('adult_registration')
+    return redirect('landing')
+
+def student_registration_view(request):
+    if request.method == 'POST':
+        form = StudentRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'form_template.html', {'form': StudentRegistrationForm(), 'success': True})
+    else:
+        form = StudentRegistrationForm()
+    return render(request, 'form_template.html', {'form': form})
+
+def adult_registration_view(request):
+    if request.method == 'POST':
+        form = AdultRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'form_template.html', {'form': AdultRegistrationForm(), 'success': True})
+    else:
+        form = AdultRegistrationForm()
+    return render(request, 'form_template.html', {'form': form})
+
 
 # Admin views
 # @login_required

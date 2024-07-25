@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Type</title>
+  
+     <style>
+        body {
+    background-color: #FFFFFF;
+    color: #000000;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #CCCCCC;
+    border-radius: 10px;
+    border: 1px solid #000000; /* Add border to the container */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* display: flex;
+    flex-direction: column; */
+    align-items: center;
+}
+
+h1 {
+    color: #0046B6;
+    text-align: center;
+    width: 100%;
+}
+
+form {
+    width: 100%;
+    /* display: flex;
+    flex-direction: column; */
+    /* border: 1px solid #000000; */
+    
+}
+
+form label {
+    width: 100%;
+    margin: 10px 0 5px;
+    color: #0046B6;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="date"],
+form input[type="tel"],
+form select,
+form textarea {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+}
+
+form button {
+    width: 50%; /* Adjust button width */
+    background-color: #F79600;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #0046B6;
+}
+
+.success-message {
+    color: #0046B6;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.error-message {
+    color: #FF0000;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+     </style>
+</head>
+<body>
+    <h1>Select Registration Type</h1>
+    <form action="{% url 'registration_type' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" name="type" value="student">Student</button>
+        <button type="submit" name="type" value="adult">Adult</button>
+    </form>
+</body>
+</html>

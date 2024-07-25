@@ -44,4 +44,35 @@ class Migration(migrations.Migration):
                 ('objects', django.contrib.auth.models.UserManager()),
             ],
         ),
+        
     ]
+    
+    # operations = [
+    #     migrations.CreateModel(
+    #         name='StudentRegistration',
+    #         fields=[
+    #             ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+    #             ('email', models.EmailField(max_length=254)),
+    #             ('full_name', models.CharField(max_length=100)),
+    #             ('date_of_birth', models.DateField()),
+    #             ('school', models.CharField(max_length=100)),
+    #             ('residence', models.CharField(max_length=100)),
+    #             ('grade', models.CharField(max_length=100)),
+    #             ('student_phone', models.CharField(blank=True, max_length=15, null=True)),
+    #             ('code_camp', models.CharField(choices=[('Form 6 Vacationers Code Camp (Mar - July)', 'Form 6 Vacationers Code Camp (Mar - July)'), ('51st Code Camp (MAY)', '51st Code Camp (MAY)'), ('Private Class', 'Private Class'), ('Easter Break Code Camp', 'Easter Break Code Camp'), ('Artificial Intelligence (Saturdays)', 'Artificial Intelligence (Saturdays)'), ('Summer Code Camp', 'Summer Code Camp')], max_length=50)),
+    #             ('mode_of_school', models.CharField(choices=[('Day', 'Day'), ('Boarding', 'Boarding')], max_length=50)),
+    #             ('type_of_school', models.CharField(choices=[('National', 'National'), ('International', 'International'), ('Semi-International', 'Semi-International')], max_length=50)),
+    #             ('course_module', models.CharField(choices=[('Scratch Beginners', 'Scratch Beginners'), ("2D Game Dev't with Scratch", "2D Game Dev't with Scratch"), ('Python Beginners', 'Python Beginners')], max_length=50)),
+    #             ('preferred_class_type', models.CharField(choices=[("Private Physical at the Client's home", "Private Physical at the Client's home"), ('Private Physical at Academy Offices', 'Private Physical at Academy Offices'), ('Private Online (Via Zoom)', 'Private Online (Via Zoom)'), ('General Physical (ICT House)', 'General Physical (ICT House)'), ('General online (via Zoom)', 'General online (via Zoom)')], max_length=50)),
+    #             ('next_term_start', models.DateField()),
+    #             ('parent_full_name', models.CharField(max_length=100)),
+    #             ('parent_title', models.CharField(choices=[('Mr.', 'Mr.'), ('Mrs.', 'Mrs.'), ('Ms.', 'Ms.'), ('Miss.', 'Miss.')], max_length=10)),
+    #             ('parent_phone', models.CharField(max_length=15)),
+    #             ('parent_occupation', models.CharField(max_length=100)),
+    #             ('referral_source', models.CharField(choices=[('A Friend', 'A Friend'), ('Twitter', 'Twitter'), ('Facebook', 'Facebook'), ('Instagram', 'Instagram'), ('LinkedIn', 'LinkedIn'), ('WhatsApp', 'WhatsApp'), ('Google Search', 'Google Search'), ('Youtube', 'Youtube'), ('TikTok', 'TikTok'), ('From School', 'From School'), ('National Science Week 2023', 'National Science Week 2023'), ('Other', 'Other')], max_length=50)),
+    #             ('referral_detail', models.CharField(blank=True, max_length=100, null=True)),
+    #             ('agree_to_terms', models.BooleanField(default=False)),
+    #         ],
+    #     ),
+    # ]
+

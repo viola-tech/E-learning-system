@@ -56,13 +56,14 @@
             height: 100px;
             background: #ccc;
             border-radius: 50%;
+            overflow: hidden;
             margin: 0 auto 10px;
         }
         .avatar img {
-            width: 100px;
-            height: 100px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
         }
-        
         
         nav ul {
             list-style: none;
@@ -104,7 +105,13 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             flex: 1;
             max-width: 200px;
+            text-decoration: none;
+            color: inherit;
         }
+        .module-item:hover {
+            background: #bbb;
+        }
+        
         .module-item img {
             width: 100px;
             height: 100px;
@@ -157,18 +164,19 @@
         <aside>
             <div class="profile">
                 <div class="avatar">
-                    <img src="{% static 'images/code-academy.png'   static %}" alt="Code Academy Uganda Logo">
+                    {% comment %} <img src="{{ user.profile_picture.url }}" alt="profile picture"> {% endcomment %}
+                    <img src="{% static   'images/maria.jpg'   static %}" alt="profile picture">
                 </div>
                 <p>Hello {{ user.username }}</p>
             </div>
             <nav>
                 <ul>
-                    <li><a href="{% url 'quiz' %}">Dashboard</a></li>
-                    <li><a href="{% url 'quiz' %}">Quizzes</a></li>
-                    <li><a href="{% url 'learning_materials' %}">Learning materials</a></li>
-                    <li><a href="#">Submit project</a></li>
-                    <li><a href="{% url 'student_profile' %}">Learner report</a></li>
-                    <li><a href="{% url 'logout_confirmation' %}">Log out</a></li>
+                    <li><a href="{% url 'landing' %}"><b>Register Here! </b></a></li>
+                    <li><a href="{% url 'quiz' %}"><b>Quizzes</b></a></li>
+                    <li><a href="{% url 'learning_materials' %}"><b>Learning materials</b></a></li>
+                    <li><a href="{% url 'quiz' %}"><b>Submit project</b></a></li>
+                    <li><a href="{% url 'student_profile' %}"><b>Learner report</b></a></li>
+                    <li><a href="{% url 'logout_confirmation' %}"><b>Log out</b></a></li>
                 </ul>
             </nav>
         </aside>
@@ -176,38 +184,38 @@
         <main>
             <h2>Scratch Intermediate Module</h2>
             <div class="module">
-                <div class="module-item">
-                    <img src="{% static 'images/image.png' %}" alt="Learning Progress">
+                <a href="#" class="module-item">
+                    <img src="{% static 'images/progress.jpg' %}" alt="Learning Progress">
                     <p>Learning Progress</p>
                     <div class="progress-bar">
                         <div class="progress" style="width: 79%;"></div>
                         <span>79%</span>
                     </div>
-                </div>
-                <div class="module-item">
-                    <img src="{% static 'images/image.png' %}" alt="Quizzes">
+                </a>
+                <a href="{% url 'quiz' %}" class="module-item">
+                    <img src="{% static 'images/Quizzes.jpeg' %}" alt="Quizzes">
                     <p>Quizzes</p>
                     <div class="progress-bar">
                         <div class="progress" style="width: 79%;"></div>
                         <span>79%</span>
                     </div>
-                </div>
-                <div class="module-item">
-                    <img src="{% static 'images/image.png' %}" alt="Project Submission">
+                </a>
+                <a href="#" class="module-item">
+                    <img src="{% static 'images/Submission.png' %}" alt="Project Submission">
                     <p>Project Submission</p>
                     <div class="progress-bar">
-                        <div class="progress" style="width: 0%;"></div>
-                        <span>0%</span>
+                        <div class="progress" style="width: 5%;"></div>
+                        <span>5%</span>
                     </div>
-                </div>
-                <div class="module-item">
-                    <img src="{% static 'images/image.png' %}" alt="Analytics">
+                </a>
+                <a href="{% url 'quiz' %}" class="module-item">
+                    <img src="{% static 'images/analytics.jpg' %}" alt="Analytics">
                     <p>Analytics</p>
                     <div class="progress-bar">
                         <div class="progress" style="width: 79%;"></div>
                         <span>79%</span>
                     </div>
-                </div>
+                </a>
             </div>
         </main>
     </div>
