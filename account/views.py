@@ -18,8 +18,16 @@ def register(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            msg = 'user created'
+            user = form.save(commit=False)
+            user_type = form.cleaned_data.get('user_type')
+            if user_type == 'admin':
+                user.is_admin = True
+            elif user_type == 'student':
+                user.is_student = True
+            elif user_type == 'employee':
+                user.is_employee = True
+            user.save()
+            msg = 'user created successfully'
             return redirect('login_view')
         else:
             msg = 'form is not valid'
@@ -36,20 +44,36 @@ def login_view(request):
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
-            if user is not None and user.is_admin:
-                login(request, user)
-                return redirect('adminpage')
-            elif user is not None and user.is_student:
-                login(request, user)
-                return redirect('student')
-            elif user is not None and user.is_employee:
-                login(request, user)
-                return redirect('employee')
+            if user is not None:
+                if user.user_type == 'admin':
+                    login(request, user)
+                    return redirect('adminpage')
+                elif user.user_type == 'student':
+                    login(request, user)
+                    return redirect('student')
+                elif user.user_type == 'employee':
+                    login(request, user)
+                    return redirect('employee')
             else:
-                msg= 'invalid credentials'
+                msg = 'Invalid credentials'
         else:
-            msg = 'error validating form'
+            msg = 'Error validating the form'
+
     return render(request, 'login.html', {'form': form, 'msg': msg})
+    #         if user is not None and user.is_admin:
+    #             login(request, user)
+    #             return redirect('adminpage')
+    #         elif user is not None and user.is_student:
+    #             login(request, user)
+    #             return redirect('student')
+    #         elif user is not None and user.is_employee:
+    #             login(request, user)
+    #             return redirect('employee')
+    #         else:
+    #             msg= 'invalid credentials'
+    #     else:
+    #         msg = 'error validating form'
+    # return render(request, 'login.html', {'form': form, 'msg': msg})
 
 
 def admin(request):

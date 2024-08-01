@@ -6,9 +6,16 @@ from django.contrib.auth.models import User
 
 
 class User(AbstractUser):
-    is_admin= models.BooleanField('Is admin', default=False)
-    is_student = models.BooleanField('Is student', default=False)
-    is_employee = models.BooleanField('Is employee', default=False)
+    USER_TYPE_CHOICES = [
+        ('admin', 'Admin'),
+        ('student', 'Student'),
+        ('employee', 'Employee'),
+    ]
+    user_type = models.CharField(max_length=10, choices=USER_TYPE_CHOICES, default='student')
+    
+    # is_admin= models.BooleanField('Is admin', default=False)
+    # is_student = models.BooleanField('Is student', default=False)
+    # is_employee = models.BooleanField('Is employee', default=False)
     
     
 # class Course(models.Model):
