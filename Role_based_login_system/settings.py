@@ -117,7 +117,7 @@ USE_TZ = True
 
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://learning-management-system-ce35798d-787a-4acd-b4a0.cranecloud.io',
+    '*',
     #
 ]
 
